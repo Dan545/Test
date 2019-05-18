@@ -1,0 +1,2722 @@
+{
+    "triggers": [
+        {
+            "targets": [
+                {
+                    "type": "page",
+                    "page": "summary"
+                }
+            ],
+            "name": "common_pages",
+            "expression": {
+                "or": [
+                    {
+                        "eq": [
+                            {
+                                "attribute": {
+                                    "type": "text",
+                                    "group": "who_are_you",
+                                    "field": "who_are_you"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "patient"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "eq": [
+                            {
+                                "attribute": {
+                                    "type": "text",
+                                    "group": "who_are_you",
+                                    "field": "who_are_you"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "carer"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "eq": [
+                            {
+                                "attribute": {
+                                    "type": "text",
+                                    "group": "who_are_you",
+                                    "field": "who_are_you"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "hcp"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "targets": [
+                {
+                    "type": "page",
+                    "page": "patient_products"
+                },
+                {
+                    "type": "page",
+                    "page": "patient_problems"
+                },
+                {
+                    "type": "page",
+                    "page": "patient_patient_details"
+                },
+                {
+                    "type": "page",
+                    "page": "patient_additional_details"
+                }
+            ],
+            "name": "patient_pages",
+            "expression": {
+                "eq": [
+                    {
+                        "attribute": {
+                            "type": "text",
+                            "group": "who_are_you",
+                            "field": "who_are_you"
+                        }
+                    },
+                    {
+                        "value": {
+                            "text": "patient"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "targets": [
+                {
+                    "type": "page",
+                    "page": "carer_products"
+                },
+                {
+                    "type": "page",
+                    "page": "carer_problems"
+                },
+                {
+                    "type": "page",
+                    "page": "carer_patient_details"
+                },
+                {
+                    "type": "page",
+                    "page": "carer_reporter_details"
+                },
+                {
+                    "type": "page",
+                    "page": "carer_additional_details"
+                }
+            ],
+            "name": "carer_pages",
+            "expression": {
+                "eq": [
+                    {
+                        "attribute": {
+                            "type": "text",
+                            "group": "who_are_you",
+                            "field": "who_are_you"
+                        }
+                    },
+                    {
+                        "value": {
+                            "text": "carer"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "targets": [
+                {
+                    "type": "page",
+                    "page": "hcp_products"
+                },
+                {
+                    "type": "page",
+                    "page": "hcp_problems"
+                },
+                {
+                    "type": "page",
+                    "page": "hcp_patient_details"
+                },
+                {
+                    "type": "page",
+                    "page": "hcp_reporter_details"
+                },
+                {
+                    "type": "page",
+                    "page": "hcp_additional_details"
+                }
+            ],
+            "name": "hcp_pages",
+            "expression": {
+                "eq": [
+                    {
+                        "attribute": {
+                            "type": "text",
+                            "group": "who_are_you",
+                            "field": "who_are_you"
+                        }
+                    },
+                    {
+                        "value": {
+                            "text": "hcp"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "targets": [
+                {
+                    "type": "group",
+                    "group": "hcp_details"
+                }
+            ],
+            "name": "patient_hcp_contact_info",
+            "expression": {
+                "eq": [
+                    {
+                        "attribute": {
+                            "type": "text",
+                            "group": "patient_details",
+                            "field": "consent"
+                        }
+                    },
+                    {
+                        "value": {
+                            "text": "yes"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "targets": [
+                {
+                    "type": "group",
+                    "group": "patient_concomitant_product_items"
+                }
+            ],
+            "name": "patient_concomitant_products",
+            "expression": {
+                "eq": [
+                    {
+                        "attribute": {
+                            "type": "text",
+                            "group": "patient_concomitant_products",
+                            "field": "assessment"
+                        }
+                    },
+                    {
+                        "value": {
+                            "text": "yes"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "targets": [
+                {
+                    "type": "group",
+                    "group": "carer_concomitant_product_items"
+                }
+            ],
+            "name": "carer_concomitant_products",
+            "expression": {
+                "eq": [
+                    {
+                        "attribute": {
+                            "type": "text",
+                            "group": "carer_concomitant_products",
+                            "field": "assessment"
+                        }
+                    },
+                    {
+                        "value": {
+                            "text": "yes"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "targets": [
+                {
+                    "type": "group",
+                    "group": "death"
+                }
+            ],
+            "name": "carer_cause_of_death",
+            "expression": {
+                "in": [
+                    {
+                        "attribute": {
+                            "type": "list_string",
+                            "group": "carer_ae",
+                            "field": "seriousness"
+                        }
+                    },
+                    {
+                        "value": {
+                            "text": "death"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "targets": [
+                {
+                    "type": "group",
+                    "group": "hcp_details"
+                }
+            ],
+            "name": "hcp_hcp_contact_info",
+            "expression": {
+                "eq": [
+                    {
+                        "attribute": {
+                            "type": "text",
+                            "group": "hcp_patient_details",
+                            "field": "consent"
+                        }
+                    },
+                    {
+                        "value": {
+                            "text": "yes"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "targets": [
+                {
+                    "type": "group",
+                    "group": "hcp_concomitant_product_items"
+                }
+            ],
+            "name": "hcp_concomitant_products",
+            "expression": {
+                "eq": [
+                    {
+                        "attribute": {
+                            "type": "text",
+                            "group": "hcp_concomitant_products",
+                            "field": "assessment"
+                        }
+                    },
+                    {
+                        "value": {
+                            "text": "yes"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "pages": [
+        {
+            "type": "branching",
+            "title": "Please select who you are.",
+            "shortLabel": "Who?",
+            "next_label": "Continue to next step",
+            "name": "who_are_you",
+            "label": "Let's get started.",
+            "icon": "profile",
+            "group": "who_are_you",
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Let's get some product details.",
+            "shortLabel": "PRODUCT",
+            "next_label": "Continue to next step",
+            "name": "patient_products",
+            "label": "Product Details",
+            "icon": "medicine",
+            "groups": [
+                "patient_suspect_products"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Okay, tell us the problem.",
+            "shortLabel": "PROBLEM",
+            "next_label": "Continue to next step",
+            "name": "patient_problems",
+            "label": "Problem Details",
+            "icon": "pencil",
+            "groups": [
+                "patient_ae"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Now, a little about you.",
+            "shortLabel": "YOU",
+            "next_label": "Continue to next step",
+            "name": "patient_patient_details",
+            "label": "Personal Details",
+            "icon": "profile",
+            "groups": [
+                "patient_details",
+                "hcp_details",
+                "additional_context"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Just a few more details (optional).",
+            "shortLabel": "ADDITIONAL",
+            "next_label": "Continue to next step",
+            "name": "patient_additional_details",
+            "label": "Additional Details",
+            "icon": "plusSign",
+            "groups": [
+                "patient_concomitant_products",
+                "patient_concomitant_product_items"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Let's get some product details.",
+            "shortLabel": "PRODUCT",
+            "next_label": "Continue to next step",
+            "name": "carer_products",
+            "label": "Product Details",
+            "icon": "medicine",
+            "groups": [
+                "carer_suspect_products"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Okay, tell us the problem.",
+            "shortLabel": "PROBLEM",
+            "next_label": "Continue to next step",
+            "name": "carer_problems",
+            "label": "Problem Details",
+            "icon": "pencil",
+            "groups": [
+                "carer_ae"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Now, a little about you.",
+            "shortLabel": "PATIENT",
+            "next_label": "Continue to next step",
+            "name": "carer_patient_details",
+            "label": "Personal Details",
+            "icon": "profile",
+            "groups": [
+                "carer_patient_details"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Reporter Details",
+            "shortLabel": "YOU",
+            "next_label": "Continue to next step",
+            "name": "carer_reporter_details",
+            "label": "Reporter Details",
+            "icon": "profileOutline",
+            "groups": [
+                "carer_reporter_details"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Just a few more details (optional).",
+            "shortLabel": "ADDITIONAL",
+            "next_label": "Continue to next step",
+            "name": "carer_additional_details",
+            "label": "Additional Details",
+            "icon": "plusSign",
+            "groups": [
+                "carer_concomitant_products",
+                "carer_concomitant_product_items"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "hcp_products title",
+            "shortLabel": "PRODUCT",
+            "next_label": "Continue to next step",
+            "name": "hcp_products",
+            "label": "hcp_products label",
+            "icon": "medicine",
+            "groups": [
+                "hcp_suspect_products"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Okay, tell us the problem.",
+            "shortLabel": "PROBLEM",
+            "next_label": "Continue to next step",
+            "name": "hcp_problems",
+            "label": "Problem Details",
+            "icon": "pencil",
+            "groups": [
+                "hcp_ae"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Now, a little about you.",
+            "shortLabel": "PATIENT",
+            "next_label": "Continue to next step",
+            "name": "hcp_patient_details",
+            "label": "Personal Details",
+            "icon": "profile",
+            "groups": [
+                "hcp_patient_details",
+                "hcp_details"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Reporter Details",
+            "shortLabel": "YOU",
+            "next_label": "Continue to next step",
+            "name": "hcp_reporter_details",
+            "label": "Reporter Details",
+            "icon": "profileOutline",
+            "groups": [
+                "hcp_reporter_details"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "dataEntry",
+            "title": "Just a few more details (optional).",
+            "shortLabel": "ADDITIONAL",
+            "next_label": "Continue to next step",
+            "name": "hcp_additional_details",
+            "label": "Additional Details",
+            "icon": "plusSign",
+            "groups": [
+                "hcp_concomitant_products",
+                "hcp_concomitant_product_items"
+            ],
+            "back_label": "Back"
+        },
+        {
+            "type": "summary",
+            "title": "Review details & Confirm",
+            "shortLabel": "Summary",
+            "next_label": "Confirm & complete",
+            "name": "summary",
+            "label": "Confirm Details",
+            "icon": "summary",
+            "back_label": "Back",
+            "agreement_text": "summary.agreement"
+        }
+    ],
+    "name": "J001",
+    "groups": [
+        {
+            "triggers": [],
+            "name": "who_are_you",
+            "fields": [
+                {
+                    "widget": "next_button",
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "patient",
+                            "label": "The patient",
+                            "color": "primary"
+                        },
+                        {
+                            "value": "carer",
+                            "label": "A friend or care giver",
+                            "color": "secondary"
+                        },
+                        {
+                            "value": "hcp",
+                            "label": "A Healthcare Professional",
+                            "color": "ternary"
+                        }
+                    ],
+                    "name": "who_are_you",
+                    "label": "I am...",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "vertical"
+                    }
+                }
+            ],
+            "dataPath": {
+                "type": "main"
+            }
+        },
+        {
+            "triggers": [
+                {
+                    "targets": [
+                        "batch_lot_number.number"
+                    ],
+                    "name": "allow_batch_lot_number",
+                    "expression": {
+                        "eq": [
+                            {
+                                "attribute": {
+                                    "type": "text",
+                                    "field": "batch_lot_number.provided"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": "patient_suspect_products",
+            "fields": [
+                {
+                    "type": "label",
+                    "required": true,
+                    "name": "name.label",
+                    "label": "Which product has caused the problem?",
+                    "helpText": "patient_products.patient_products.name.help_text"
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true,
+                        "max_length": 50
+                    },
+                    "type": "text",
+                    "name": "name",
+                    "disabled": false
+                },
+                {
+                    "type": "label",
+                    "required": false,
+                    "name": "dates.label",
+                    "label": "When did the patient start/ stop using this product?"
+                },
+                {
+                    "widget": "daterange",
+                    "type": "dual_date",
+                    "todayLabel": "Today",
+                    "name": "dates",
+                    "labels": {
+                        "to": "Until",
+                        "from": "From"
+                    },
+                    "future": false,
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "type": "label",
+                    "required": false,
+                    "name": "indication.term.label",
+                    "label": "What condition is the patient treating?"
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": false,
+                        "max_length": 100
+                    },
+                    "type": "text",
+                    "placeholder": "Enter Condition Name",
+                    "name": "indication.term",
+                    "label": "Enter Condition Name",
+                    "floatingLabel": true,
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "value": "verbatim",
+                    "validations": {
+                        "required": false
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "verbatim",
+                            "label": "Verbatim"
+                        }
+                    ],
+                    "name": "indication.type",
+                    "label": "Type of indication (Set to 'verbatim')",
+                    "floatingLabel": false,
+                    "disabled": true,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "type": "label",
+                    "required": false,
+                    "name": "batch_lot_number.label",
+                    "label": "Can you provide us with some product information?",
+                    "helpText": "patient_products.patient_products.batch_lot_number.help_text"
+                },
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": false
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        },
+                        {
+                            "value": "unknown",
+                            "label": "Unknown"
+                        }
+                    ],
+                    "name": "batch_lot_number.provided",
+                    "label": "Product Batch/lot number",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": false,
+                        "max_length": 35
+                    },
+                    "type": "text",
+                    "name": "batch_lot_number.number",
+                    "label": "Product Batch/Lot number",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "datepicker",
+                    "type": "date",
+                    "todayLabel": "Today",
+                    "name": "expiry_date",
+                    "label": "Product expiry date",
+                    "future": false,
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": false,
+                        "max_length": 100
+                    },
+                    "type": "text",
+                    "placeholder": "Enter dose (e.g 30mg per day)",
+                    "name": "dosage.text",
+                    "label": "Enter your dosage",
+                    "floatingLabel": false,
+                    "disabled": false
+                }
+            ],
+            "dataPath": {
+                "type": "multiple",
+                "newOptionLabel": "Add another Product",
+                "mainFieldName": "name",
+                "assocPath": [
+                    "suspect_products"
+                ]
+            }
+        },
+        {
+            "name": "patient_ae",
+            "fields": [
+                {
+                    "type": "label",
+                    "required": true,
+                    "name": "event.label",
+                    "label": "What are your symptoms?",
+                    "helpText": "What are your symptoms?"
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true,
+                        "max_length": 200
+                    },
+                    "type": "text",
+                    "placeholder": "Enter symptom (e.g. nausea)",
+                    "name": "event.term",
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "verbatim",
+                            "label": "Verbatim"
+                        }
+                    ],
+                    "name": "event.type",
+                    "label": "AE Name type (set to 'verbatim')",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "type": "label",
+                    "required": true,
+                    "name": "dates.label",
+                    "label": "What date did you first / last experience your symptoms.",
+                    "helpText": "What date did you first / last experience your symptoms."
+                },
+                {
+                    "widget": "daterange",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "dual_date",
+                    "todayLabel": "Today",
+                    "name": "dates",
+                    "labels": {
+                        "to": "To",
+                        "from": "From"
+                    },
+                    "future": false,
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "type": "label",
+                    "required": false,
+                    "name": "seriousness.label",
+                    "label": "How serious were your symptoms?",
+                    "helpText": "patient_problems.patient_ae.seriousness.help_text"
+                },
+                {
+                    "widget": "checkbox",
+                    "validations": {
+                        "required": false
+                    },
+                    "type": "list_string",
+                    "options": [
+                        {
+                            "value": "intervention_required",
+                            "label": "Medical intervention required"
+                        },
+                        {
+                            "value": "hospitalisation",
+                            "label": "Hospitalization"
+                        }
+                    ],
+                    "name": "seriousness",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "vertical"
+                    }
+                },
+                {
+                    "type": "label",
+                    "required": false,
+                    "name": "name.label",
+                    "label": "What was the outcome of the event",
+                    "helpText": "patient_problems.patient_ae.outcome.help_text"
+                },
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": false,
+                        "allowed_values": [
+                            "recovered-completely",
+                            "recovered-lasting",
+                            "improved",
+                            "persisting",
+                            "worsened"
+                        ]
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "recovered-completely",
+                            "label": "Recovered completely"
+                        },
+                        {
+                            "value": "recovered-lasting",
+                            "label": "Recovered with lasting effects"
+                        },
+                        {
+                            "value": "improved",
+                            "label": "Improved"
+                        },
+                        {
+                            "value": "persisting",
+                            "label": "Persisting"
+                        },
+                        {
+                            "value": "worsened",
+                            "label": "Worsened"
+                        }
+                    ],
+                    "name": "outcome",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "vertical"
+                    }
+                }
+            ],
+            "dataPath": {
+                "type": "multiple",
+                "newOptionLabel": "Add another Problem",
+                "mainFieldName": "name",
+                "assocPath": [
+                    "adverse_events"
+                ]
+            }
+        },
+        {
+            "triggers": [
+                {
+                    "targets": [
+                        "pregnant",
+                        "pregnant.label"
+                    ],
+                    "name": "pregnancy",
+                    "expression": {
+                        "eq": [
+                            {
+                                "attribute": {
+                                    "type": "text",
+                                    "field": "gender"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "female"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": "patient_details",
+            "label": "Plaease fill in at least one of the details below.",
+            "helpText": "patient_details.patient_details.help_text",
+            "fields": [
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": false,
+                        "max_length": 10
+                    },
+                    "type": "text",
+                    "placeholder": "Your initials",
+                    "name": "initials",
+                    "label": "Your initials",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text_select",
+                    "type": "value_unit",
+                    "selected_unit": "year",
+                    "placeholder": "Enter your age",
+                    "options": [
+                        {
+                            "value": "year",
+                            "label": "Years"
+                        },
+                        {
+                            "value": "month",
+                            "label": "Months"
+                        },
+                        {
+                            "value": "day",
+                            "label": "Days"
+                        }
+                    ],
+                    "name": "birth",
+                    "label": "Your age",
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": true,
+                        "allowed_values": [
+                            "male",
+                            "female"
+                        ]
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "male",
+                            "label": "Male"
+                        },
+                        {
+                            "value": "female",
+                            "label": "Female"
+                        }
+                    ],
+                    "name": "gender",
+                    "label": "Gender",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "vertical"
+                    }
+                },
+                {
+                    "type": "label",
+                    "required": false,
+                    "name": "pregnant.label",
+                    "label": "Are you pregnant?",
+                    "helpText": "patient_details.patient_details.pregnancy.help_text"
+                },
+                {
+                    "widget": "radio",
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        },
+                        {
+                            "value": "unknown",
+                            "label": "Don't know"
+                        }
+                    ],
+                    "name": "pregnant",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "vertical"
+                    }
+                },
+                {
+                    "type": "label",
+                    "required": false,
+                    "name": "consent.label",
+                    "label": "Do we have your permission to contact your doctor?",
+                    "helpText": "patient_details.patient_details.consent_to_contact_doctor.help_text"
+                },
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": false,
+                        "allowed_values": [
+                            "yes",
+                            "no"
+                        ]
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        }
+                    ],
+                    "name": "consent",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                }
+            ],
+            "dataPath": {
+                "type": "single",
+                "assocPath": [
+                    "patient"
+                ]
+            }
+        },
+        {
+            "name": "patient_concomitant_products",
+            "fields": [
+                {
+                    "type": "label",
+                    "required": true,
+                    "name": "assessment.label",
+                    "label": "Are you taking any other medication?",
+                    "helpText": "patient_additional_details.patient_concomitant_products.assessment.help_text"
+                },
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": true,
+                        "allowed_values": [
+                            "yes",
+                            "no"
+                        ]
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        }
+                    ],
+                    "name": "assessment",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "vertical"
+                    }
+                }
+            ],
+            "dataPath": {
+                "type": "single",
+                "mainFieldName": "assessment",
+                "assocPath": [
+                    "concomitant_products"
+                ]
+            }
+        },
+        {
+            "name": "patient_concomitant_product_items",
+            "fields": [
+                {
+                    "type": "label",
+                    "required": true,
+                    "name": "name.label",
+                    "label": "Please tell us which product",
+                    "helpText": "patient_additional_details.patient_concomitant_product_items.name.help_text"
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "text",
+                    "placeholder": "Enter product name",
+                    "name": "name",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "type": "label",
+                    "required": true,
+                    "name": "indication.label",
+                    "label": "What condition are you treating?",
+                    "helpText": "What condition are you treating?"
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true,
+                        "max_length": 100
+                    },
+                    "type": "text",
+                    "placeholder": "Enter Condition Name",
+                    "name": "indication.term",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "value": "verbatim",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "verbatim",
+                            "label": "Verbatim"
+                        }
+                    ],
+                    "name": "indication.type",
+                    "label": "Type of indication (Set to 'verbatim')",
+                    "floatingLabel": false,
+                    "disabled": true,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "type": "label",
+                    "required": false,
+                    "name": "dates.label",
+                    "label": "When did you start / stop using this product?",
+                    "helpText": "When did you start / stop using this product?"
+                },
+                {
+                    "widget": "daterange",
+                    "type": "dual_date",
+                    "todayLabel": "Today",
+                    "name": "dates",
+                    "labels": {
+                        "to": "End Date",
+                        "from": "Start Date"
+                    },
+                    "future": false,
+                    "floatingLabel": false,
+                    "disabled": false
+                }
+            ],
+            "dataPath": {
+                "type": "multiple",
+                "newOptionLabel": "Add another Product",
+                "mainFieldName": "name",
+                "assocPath": [
+                    "concomitant_products",
+                    "items"
+                ]
+            }
+        },
+        {
+            "triggers": [
+                {
+                    "targets": [
+                        "batch_lot_number.number"
+                    ],
+                    "name": "allow_batch_lot_number",
+                    "expression": {
+                        "eq": [
+                            {
+                                "attribute": {
+                                    "type": "text",
+                                    "field": "batch_lot_number.provided"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": "carer_suspect_products",
+            "fields": [
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true,
+                        "max_length": 50
+                    },
+                    "type": "text",
+                    "placeholder": "patient_products.carer_products.name.placeholder",
+                    "name": "name",
+                    "label": "patient_products.carer_products.name.label",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "daterange",
+                    "type": "dual_date",
+                    "todayLabel": "Today",
+                    "name": "dates",
+                    "labels": {
+                        "to": "Until",
+                        "from": "From"
+                    },
+                    "future": false,
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": false,
+                        "max_length": 100
+                    },
+                    "type": "text",
+                    "placeholder": "Enter Condition Name",
+                    "name": "indication.term",
+                    "label": "What condition is the patient treating?",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "value": "verbatim",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "verbatim",
+                            "label": "Verbatim"
+                        }
+                    ],
+                    "name": "indication.type",
+                    "label": "Type of indication (Set to 'verbatim')",
+                    "floatingLabel": false,
+                    "disabled": true,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": false
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        },
+                        {
+                            "value": "unknown",
+                            "label": "Unknown"
+                        }
+                    ],
+                    "name": "batch_lot_number.provided",
+                    "label": "Product Batch/lot number",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": false,
+                        "max_length": 35
+                    },
+                    "type": "text",
+                    "name": "batch_lot_number.number",
+                    "label": "Product Batch/Lot number",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "datepicker",
+                    "type": "date",
+                    "todayLabel": "Today",
+                    "name": "expiry_date",
+                    "label": "patient_products.carer_products.expiry_date.label",
+                    "future": false,
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": false,
+                        "max_length": 100
+                    },
+                    "type": "text",
+                    "placeholder": "Enter dose (e.g 30mg per day)",
+                    "name": "dosage.text",
+                    "label": "Enter their dosage",
+                    "floatingLabel": false,
+                    "disabled": false
+                }
+            ],
+            "dataPath": {
+                "type": "multiple",
+                "newOptionLabel": "Add another Product",
+                "mainFieldName": "name",
+                "assocPath": [
+                    "suspect_products"
+                ]
+            }
+        },
+        {
+            "triggers": [
+                {
+                    "targets": [
+                        "outcome"
+                    ],
+                    "name": "outcome_results",
+                    "expression": {
+                        "nin": [
+                            {
+                                "attribute": {
+                                    "type": "list_string",
+                                    "field": "seriousness"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "death"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": "carer_ae",
+            "fields": [
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true,
+                        "max_length": 200
+                    },
+                    "type": "text",
+                    "placeholder": "Enter symptom (e.g. nausea)",
+                    "name": "event.term",
+                    "label": "What are the patient's symptoms?",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "verbatim",
+                            "label": "Verbatim"
+                        }
+                    ],
+                    "name": "event.type",
+                    "label": "AE Name type (set to 'verbatim')",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "daterange",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "dual_date",
+                    "todayLabel": "Today",
+                    "name": "dates",
+                    "labels": {
+                        "to": "Until Date",
+                        "from": "From Date"
+                    },
+                    "future": false,
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "checkbox",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "list_string",
+                    "options": [
+                        {
+                            "value": "intervention_required",
+                            "label": "carer_problems.carer_ae.seriousness.options.intervention_required"
+                        },
+                        {
+                            "value": "hospitalisation",
+                            "label": "Hospitalization"
+                        },
+                        {
+                            "value": "death",
+                            "label": "Death"
+                        }
+                    ],
+                    "name": "seriousness",
+                    "label": "How serious were the patient symptoms?",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "vertical"
+                    }
+                },
+                {
+                    "widget": "radio",
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "recovered-completely",
+                            "label": "Recovered completely"
+                        },
+                        {
+                            "value": "recovered-lasting",
+                            "label": "Recovered with lasting effects"
+                        },
+                        {
+                            "value": "improved",
+                            "label": "Improved"
+                        },
+                        {
+                            "value": "persisting",
+                            "label": "Persisting"
+                        },
+                        {
+                            "value": "worsened",
+                            "label": "Worsened"
+                        },
+                        {
+                            "value": "unknown",
+                            "label": "patient_problems.patient_ae.outcome.options.unknown"
+                        }
+                    ],
+                    "name": "outcome",
+                    "label": "What was the outcome of the event",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "vertical"
+                    }
+                }
+            ],
+            "dataPath": {
+                "type": "multiple",
+                "newOptionLabel": "Add another Problem",
+                "mainFieldName": "name",
+                "assocPath": [
+                    "adverse_events"
+                ]
+            }
+        },
+        {
+            "triggers": [
+                {
+                    "targets": [
+                        "pregnant"
+                    ],
+                    "name": "pregnancy",
+                    "expression": {
+                        "eq": [
+                            {
+                                "attribute": {
+                                    "type": "text",
+                                    "field": "gender"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "female"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": "carer_patient_details",
+            "label": "Please enter the patient details.",
+            "fields": [
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true,
+                        "max_length": 10
+                    },
+                    "type": "text",
+                    "name": "initials",
+                    "label": "Their initials",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text_select",
+                    "type": "value_unit",
+                    "selected_unit": "year",
+                    "placeholder": "Enter your age",
+                    "options": [
+                        {
+                            "value": "year",
+                            "label": "Years"
+                        },
+                        {
+                            "value": "month",
+                            "label": "Months"
+                        },
+                        {
+                            "value": "day",
+                            "label": "Days"
+                        }
+                    ],
+                    "name": "birth",
+                    "label": "Your age",
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": true,
+                        "allowed_values": [
+                            "male",
+                            "female"
+                        ]
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "male",
+                            "label": "Male"
+                        },
+                        {
+                            "value": "female",
+                            "label": "Female"
+                        }
+                    ],
+                    "name": "gender",
+                    "label": "Their Gender at birth",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "radio",
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        },
+                        {
+                            "value": "unknown",
+                            "label": "Unknown"
+                        }
+                    ],
+                    "name": "pregnant",
+                    "label": "Are they pregnant",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "horizontal"
+                    }
+                }
+            ],
+            "dataPath": {
+                "type": "single",
+                "assocPath": [
+                    "patient"
+                ]
+            }
+        },
+        {
+            "triggers": [
+                {
+                    "targets": [
+                        "last_name",
+                        "first_name",
+                        "address_line_1",
+                        "town",
+                        "county",
+                        "postcode",
+                        "country",
+                        "email",
+                        "phone"
+                    ],
+                    "name": "reporter_details",
+                    "expression": {
+                        "eq": [
+                            {
+                                "attribute": {
+                                    "type": "text",
+                                    "field": "personal_info_consent"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": "carer_reporter_details",
+            "label": "",
+            "fields": [
+                {
+                    "widget": "radio",
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        }
+                    ],
+                    "name": "personal_info_consent",
+                    "label": "Do we have permission to contact you for further information?",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "last_name",
+                    "label": "Your last name",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "first_name",
+                    "label": "Your first name",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "address_line_1",
+                    "label": "Address",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "town",
+                    "label": "Town",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "county",
+                    "label": "County",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "postcode",
+                    "label": "Post code",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "country",
+                    "label": "Country",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "email",
+                    "label": "Email",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "phone",
+                    "label": "Phone number",
+                    "floatingLabel": false,
+                    "disabled": false
+                }
+            ],
+            "dataPath": {
+                "type": "single",
+                "assocPath": [
+                    "reporter"
+                ]
+            }
+        },
+        {
+            "name": "carer_concomitant_products",
+            "fields": [
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": true,
+                        "allowed_values": [
+                            "yes",
+                            "no"
+                        ]
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        }
+                    ],
+                    "name": "assessment",
+                    "label": "Are you taking any other medication?",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "horizontal"
+                    }
+                }
+            ],
+            "dataPath": {
+                "type": "single",
+                "mainFieldName": "assessment",
+                "assocPath": [
+                    "concomitant_products"
+                ]
+            }
+        },
+        {
+            "name": "carer_concomitant_product_items",
+            "fields": [
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "placeholder": "Enter product name",
+                    "name": "name",
+                    "label": "Please tell us which product",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true,
+                        "max_length": 100
+                    },
+                    "type": "text",
+                    "placeholder": "Enter Condition Name",
+                    "name": "indication.term",
+                    "label": "What condition are they treating?",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "value": "verbatim",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "verbatim",
+                            "label": "Verbatim"
+                        }
+                    ],
+                    "name": "indication.type",
+                    "label": "Type of indication (Set to 'verbatim')",
+                    "floatingLabel": false,
+                    "disabled": true,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "daterange",
+                    "type": "dual_date",
+                    "todayLabel": "Today",
+                    "name": "dates",
+                    "labels": {
+                        "to": "End Date",
+                        "from": "Start Date"
+                    },
+                    "future": false,
+                    "floatingLabel": false,
+                    "disabled": false
+                }
+            ],
+            "dataPath": {
+                "type": "multiple",
+                "newOptionLabel": "Add another Product",
+                "mainFieldName": "name",
+                "assocPath": [
+                    "concomitant_products",
+                    "items"
+                ]
+            }
+        },
+        {
+            "triggers": [
+                {
+                    "targets": [
+                        "batch_lot_number.number"
+                    ],
+                    "name": "allow_batch_lot_number",
+                    "expression": {
+                        "eq": [
+                            {
+                                "attribute": {
+                                    "type": "text",
+                                    "field": "batch_lot_number.provided"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": "hcp_suspect_products",
+            "fields": [
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true,
+                        "max_length": 50
+                    },
+                    "type": "text",
+                    "placeholder": "patient_products.carer_products.name.placeholder",
+                    "name": "name",
+                    "label": "Which product has caused the problem",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "daterange",
+                    "type": "dual_date",
+                    "todayLabel": "Today",
+                    "name": "dates",
+                    "labels": {
+                        "to": "Until",
+                        "from": "From"
+                    },
+                    "future": false,
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true,
+                        "max_length": 100
+                    },
+                    "type": "text",
+                    "placeholder": "Enter Condition Name",
+                    "name": "indication.term",
+                    "label": "What condition are you treating?",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "value": "verbatim",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "verbatim",
+                            "label": "Verbatim"
+                        }
+                    ],
+                    "name": "indication.type",
+                    "label": "Type of indication (Set to 'verbatim')",
+                    "floatingLabel": false,
+                    "disabled": true,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": false
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        },
+                        {
+                            "value": "unknown",
+                            "label": "Unknown"
+                        }
+                    ],
+                    "name": "batch_lot_number.provided",
+                    "label": "Product Batch/lot number",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": false,
+                        "max_length": 35
+                    },
+                    "type": "text",
+                    "name": "batch_lot_number.number",
+                    "label": "Product Batch/Lot number",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "datepicker",
+                    "type": "date",
+                    "todayLabel": "Today",
+                    "name": "expiry_date",
+                    "label": "patient_products.carer_products.expiry_date.label",
+                    "future": false,
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": false,
+                        "max_length": 100
+                    },
+                    "type": "text",
+                    "placeholder": "Enter dose (e.g 30mg per day)",
+                    "name": "dosage.text",
+                    "label": "Enter their dosage",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": false,
+                        "max_length": 50
+                    },
+                    "type": "text",
+                    "placeholder": "(e.g. Intravenous injection)",
+                    "name": "dosage.form",
+                    "label": "Describe dosage formulation",
+                    "floatingLabel": false,
+                    "disabled": false
+                }
+            ],
+            "dataPath": {
+                "type": "multiple",
+                "newOptionLabel": "Add another Product",
+                "mainFieldName": "name",
+                "assocPath": [
+                    "suspect_products"
+                ]
+            }
+        },
+        {
+            "triggers": [
+                {
+                    "targets": [
+                        "outcome"
+                    ],
+                    "name": "outcome_results",
+                    "expression": {
+                        "nin": [
+                            {
+                                "attribute": {
+                                    "type": "list_string",
+                                    "field": "seriousness"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "death"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": "hcp_ae",
+            "fields": [
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true,
+                        "max_length": 200
+                    },
+                    "type": "text",
+                    "placeholder": "Enter symptom (e.g. nausea)",
+                    "name": "event.term",
+                    "label": "What are the patient's symptoms?",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "verbatim",
+                            "label": "Verbatim"
+                        }
+                    ],
+                    "name": "event.type",
+                    "label": "AE Name type (set to 'verbatim')",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "daterange",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "dual_date",
+                    "todayLabel": "Today",
+                    "name": "dates",
+                    "labels": {
+                        "to": "Until Date",
+                        "from": "From Date"
+                    },
+                    "future": false,
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "checkbox",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "list_string",
+                    "options": [
+                        {
+                            "value": "intervention_required",
+                            "label": "hcp_problems.hcp_ae.seriousness.options.intervention_required"
+                        },
+                        {
+                            "value": "hospitalisation",
+                            "label": "Hospitalization"
+                        },
+                        {
+                            "value": "death",
+                            "label": "Death"
+                        }
+                    ],
+                    "name": "seriousness",
+                    "label": "How serious were your symptoms",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "vertical"
+                    }
+                },
+                {
+                    "widget": "radio",
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "recovered-completely",
+                            "label": "hcp_problems.hcp_ae.outcome.options.recovered_completely"
+                        },
+                        {
+                            "value": "recovered-lasting",
+                            "label": "hcp_problems.hcp_ae.outcome.options.recovered_lasting"
+                        },
+                        {
+                            "value": "improved",
+                            "label": "hcp_problems.hcp_ae.outcome.options.improved"
+                        },
+                        {
+                            "value": "persisting",
+                            "label": "hcp_problems.hcp_ae.outcome.options.persisting"
+                        },
+                        {
+                            "value": "worsened",
+                            "label": "hcp_problems.hcp_ae.outcome.options.worsened"
+                        },
+                        {
+                            "value": "unknown",
+                            "label": "hcp_problems.hcp_ae.outcome.options.unknown"
+                        }
+                    ],
+                    "name": "outcome",
+                    "label": "What was the outcome of the event",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "vertical"
+                    }
+                }
+            ],
+            "dataPath": {
+                "type": "multiple",
+                "newOptionLabel": "Add another Problem",
+                "mainFieldName": "name",
+                "assocPath": [
+                    "adverse_events"
+                ]
+            }
+        },
+        {
+            "triggers": [
+                {
+                    "targets": [
+                        "pregnant"
+                    ],
+                    "name": "pregnancy",
+                    "expression": {
+                        "eq": [
+                            {
+                                "attribute": {
+                                    "type": "text",
+                                    "field": "gender"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "female"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": "hcp_patient_details",
+            "label": "Please enter the patient details.",
+            "fields": [
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true,
+                        "max_length": 10
+                    },
+                    "type": "text",
+                    "name": "initials",
+                    "label": "Their initials",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text_select",
+                    "type": "value_unit",
+                    "selected_unit": "year",
+                    "placeholder": "Enter your age",
+                    "options": [
+                        {
+                            "value": "year",
+                            "label": "Years"
+                        },
+                        {
+                            "value": "month",
+                            "label": "Months"
+                        },
+                        {
+                            "value": "day",
+                            "label": "Days"
+                        }
+                    ],
+                    "name": "birth",
+                    "label": "Your age",
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": true,
+                        "allowed_values": [
+                            "male",
+                            "female"
+                        ]
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "male",
+                            "label": "hcp_patient_details.hcp_patient_details.gender.options.male"
+                        },
+                        {
+                            "value": "female",
+                            "label": "hcp_patient_details.hcp_patient_details.gender.options.female"
+                        }
+                    ],
+                    "name": "gender",
+                    "label": "Their Gender at birth",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "radio",
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        },
+                        {
+                            "value": "unknown",
+                            "label": "Unknown"
+                        }
+                    ],
+                    "name": "pregnant",
+                    "label": "Are they pregnant",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "horizontal"
+                    }
+                }
+            ],
+            "dataPath": {
+                "type": "single",
+                "assocPath": [
+                    "patient"
+                ]
+            }
+        },
+        {
+            "triggers": [
+                {
+                    "targets": [
+                        "last_name",
+                        "first_name",
+                        "address_line_1",
+                        "town",
+                        "county",
+                        "postcode",
+                        "country",
+                        "email",
+                        "phone"
+                    ],
+                    "name": "reporter_details",
+                    "expression": {
+                        "eq": [
+                            {
+                                "attribute": {
+                                    "type": "text",
+                                    "field": "personal_info_consent"
+                                }
+                            },
+                            {
+                                "value": {
+                                    "text": "yes"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "name": "hcp_reporter_details",
+            "label": "",
+            "fields": [
+                {
+                    "widget": "radio",
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        }
+                    ],
+                    "name": "personal_info_consent",
+                    "label": "Do we have permission to contact you for further information?",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "last_name",
+                    "label": "Your last name",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "first_name",
+                    "label": "Your first name",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "address_line_1",
+                    "label": "Address",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "town",
+                    "label": "Town",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "county",
+                    "label": "County",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "postcode",
+                    "label": "Post code",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "country",
+                    "label": "Country",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "email",
+                    "label": "Email",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "phone",
+                    "label": "Phone number",
+                    "floatingLabel": false,
+                    "disabled": false
+                }
+            ],
+            "dataPath": {
+                "type": "single",
+                "assocPath": [
+                    "reporter"
+                ]
+            }
+        },
+        {
+            "name": "hcp_concomitant_products",
+            "fields": [
+                {
+                    "widget": "radio",
+                    "validations": {
+                        "required": true,
+                        "allowed_values": [
+                            "yes",
+                            "no"
+                        ]
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "yes",
+                            "label": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "label": "No"
+                        }
+                    ],
+                    "name": "assessment",
+                    "label": "hcp_additional_details.hcp_concomitant_products.assessment.label",
+                    "disabled": false,
+                    "direction": {
+                        "mobile": "vertical",
+                        "desktop": "horizontal"
+                    }
+                }
+            ],
+            "dataPath": {
+                "type": "single",
+                "mainFieldName": "assessment",
+                "assocPath": [
+                    "concomitant_products"
+                ]
+            }
+        },
+        {
+            "name": "hcp_concomitant_product_items",
+            "fields": [
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "placeholder": "hcp_additional_details.hcp_concomitant_product_items.name.placeholder",
+                    "name": "name",
+                    "label": "hcp_additional_details.hcp_concomitant_product_items.name.label",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true,
+                        "max_length": 100
+                    },
+                    "type": "text",
+                    "placeholder": "Enter Condition Name",
+                    "name": "indication.term",
+                    "label": "What condition are they treating?",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "value": "verbatim",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "verbatim",
+                            "label": "Verbatim"
+                        }
+                    ],
+                    "name": "indication.type",
+                    "label": "Type of indication (Set to 'verbatim')",
+                    "floatingLabel": false,
+                    "disabled": true,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                },
+                {
+                    "widget": "daterange",
+                    "type": "dual_date",
+                    "todayLabel": "Today",
+                    "name": "dates",
+                    "labels": {
+                        "to": "End Date",
+                        "from": "Start Date"
+                    },
+                    "future": false,
+                    "floatingLabel": false,
+                    "disabled": false
+                }
+            ],
+            "dataPath": {
+                "type": "multiple",
+                "newOptionLabel": "Add another Product",
+                "mainFieldName": "name",
+                "assocPath": [
+                    "concomitant_products",
+                    "items"
+                ]
+            }
+        },
+        {
+            "triggers": [],
+            "name": "hcp_details",
+            "fields": [
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "phone",
+                    "label": "Doctor's phone number",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "text",
+                    "type": "text",
+                    "name": "name",
+                    "label": "Doctor's name",
+                    "floatingLabel": false,
+                    "disabled": false
+                }
+            ],
+            "dataPath": {
+                "type": "single",
+                "assocPath": [
+                    "hcp_details"
+                ]
+            }
+        },
+        {
+            "triggers": [],
+            "name": "additional_context",
+            "label": "Is there anything else you would like to share, including any relevant medical history?",
+            "fields": [
+                {
+                    "widget": "textarea",
+                    "type": "text",
+                    "placeholder": "Enter additional details here",
+                    "name": "additional_context",
+                    "label": "Additional context",
+                    "floatingLabel": false,
+                    "disabled": false,
+                    "autoExpand": true
+                }
+            ],
+            "dataPath": {
+                "type": "main"
+            }
+        },
+        {
+            "triggers": [],
+            "name": "death",
+            "label": "Cause of death",
+            "fields": [
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": true
+                    },
+                    "type": "text",
+                    "placeholder": "plain text date in the YYYY-MM-DD format for now",
+                    "name": "date",
+                    "label": "Date of death",
+                    "floatingLabel": false,
+                    "disabled": false
+                }
+            ],
+            "dataPath": {
+                "type": "single",
+                "assocPath": [
+                    "death"
+                ]
+            }
+        },
+        {
+            "name": "death_causes",
+            "fields": [
+                {
+                    "widget": "text",
+                    "validations": {
+                        "required": false,
+                        "max_length": 100
+                    },
+                    "type": "text",
+                    "placeholder": "Enter Condition Name",
+                    "name": "term",
+                    "label": "What condition are you treating?",
+                    "floatingLabel": false,
+                    "disabled": false
+                },
+                {
+                    "widget": "radio",
+                    "value": "verbatim",
+                    "validations": {
+                        "required": false
+                    },
+                    "type": "text",
+                    "options": [
+                        {
+                            "value": "verbatim",
+                            "label": "Verbatim"
+                        }
+                    ],
+                    "name": "type",
+                    "label": "Type of indication (Set to 'verbatim')",
+                    "floatingLabel": false,
+                    "disabled": true,
+                    "direction": {
+                        "mobile": "horizontal",
+                        "desktop": "horizontal"
+                    }
+                }
+            ],
+            "dataPath": {
+                "type": "multiple",
+                "newOptionLabel": "Add another",
+                "mainFieldName": "term",
+                "assocPath": [
+                    "death",
+                    "causes"
+                ]
+            }
+        }
+    ]
+}
